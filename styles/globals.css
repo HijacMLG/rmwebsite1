@@ -1,42 +1,35 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* tailwindcss
+   ─────────────────────────────────────────
+   This comment signals to VS Code’s CSS linter
+   that Tailwind/PostCSS syntax is expected,
+   so it won’t flag @tailwind directives.
+   ───────────────────────────────────────── */
+
+/*  Tailwind layers  */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*  ─────────────────────────────────────────
+    Custom global tweaks
+    ───────────────────────────────────────── */
+
+/* 1. Hide horizontal scrollbar for elements that use `.no-scrollbar` */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;            /* Chrome / Safari / Opera */
+}
+.no-scrollbar {
+  -ms-overflow-style: none;  /* Edge / IE */
+  scrollbar-width: none;     /* Firefox */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* 2. Smooth in-page scrolling */
+html {
+  scroll-behavior: smooth;
 }
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+/* 3. Prevent “ghost image” when dragging pictures */
+img {
+  -webkit-user-drag: none;
+  user-select: none;
 }
